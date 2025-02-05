@@ -7,7 +7,15 @@ import noteRouter from "./routes/note.js";
 import cors from "cors";
 
 const app = express();
-app.use(cors());
+const corsOptions = {
+  origin: (origin, callback) => {
+    // Allow all origins (Note: Be careful in production with credentials)
+    callback(null, true);
+  }, // The frontend URL you want to allow (replace with the actual URL)
+  credentials: true, // Allow sending credentials (cookies, HTTP authentication)
+};
+
+app.use(cors(corsOptions));
 dotenv.config();
 
 app.use(json());
