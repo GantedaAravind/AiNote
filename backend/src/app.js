@@ -16,6 +16,10 @@ app.use(cookieParser());
 app.use("/user", userRouter);
 app.use("/note", noteRouter);
 
+app.get("/", (req, res) => {
+  res.status(200).json({ message: "Welcome to the Note-Taking API! 🚀" });
+});
+
 const PORT = process.env.PORT || 7777;
 
 connectDB()
