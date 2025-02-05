@@ -39,9 +39,13 @@ const loginController = async (req, res) => {
       expiresIn: "7d"
     });
     res.cookie("auth_token", token, {
-      path: "/",
       httpOnly: true,
-      sameSite: "none"
+      // ✅ Prevents XSS attacks
+      secure: process.env.NODE_ENV === "production",
+      // ✅ Only use secure in production
+      sameSite: "None",
+      // ✅ Required for cross-origin requests
+      maxAge: 7 * 24 * 60 * 60 * 1000 // ✅ 7 days expiry
     }).status(200).json({
       message: "Login successful",
       data: user
