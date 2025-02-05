@@ -26,7 +26,10 @@ const signupController = async (req, res) => {
     res
       .status(201)
       .cookie("auth_token", token, {
-        maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+        httpOnly: true, // ✅ Prevents XSS attacks
+        secure: process.env.NODE_ENV === "production", // ✅ Only use secure in production
+        sameSite: "None", // ✅ Required for cross-origin requests
+        maxAge: 7 * 24 * 60 * 60 * 1000, // ✅ 7 days expiry
       })
       .json({ message: "User registered successfully", data: newUser });
   } catch (error) {
