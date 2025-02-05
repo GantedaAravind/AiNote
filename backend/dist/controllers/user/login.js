@@ -38,9 +38,11 @@ const loginController = async (req, res) => {
     }, process.env.JWT_SECRET, {
       expiresIn: "7d"
     });
-    res.status(200).cookie("auth_token", token, {
-      maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
-    }).json({
+    res.cookie("auth_token", token, {
+      path: "/",
+      httpOnly: true,
+      sameSite: "none"
+    }).status(200).json({
       message: "Login successful",
       data: user
     });

@@ -25,10 +25,12 @@ const loginController = async (req, res) => {
     });
 
     res
-      .status(200)
       .cookie("auth_token", token, {
-        maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+        path: "/",
+        httpOnly: true,
+        sameSite: "none",
       })
+      .status(200)
       .json({ message: "Login successful", data: user });
   } catch (error) {
     res.status(500).json({ message: "Server Error", error: error.message });
