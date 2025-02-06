@@ -8,7 +8,7 @@ import cors from "cors";
 
 const app = express();
 const corsOptions = {
-  origin: ["http://localhost:5173"], // The frontend URL you want to allow (replace with the actual URL)
+  origin: ["https://ainote24.web.app"], // The frontend URL you want to allow (replace with the actual URL)
   credentials: true, // Allow sending credentials (cookies, HTTP authentication)
 };
 
