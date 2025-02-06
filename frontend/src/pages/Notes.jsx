@@ -115,7 +115,7 @@ const Notes = () => {
                 <li>
                   <button
                     className="w-[35vh] font-bold text-xl"
-                    onClick={logoutHnadler}
+                    onClick={logoutHandler}
                   >
                     LogOut
                   </button>

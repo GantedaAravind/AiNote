@@ -175,7 +175,7 @@ const Note = ({ title, content, _id, createdAt, isFavorite, imageUrls }) => {
       </dialog>
 
       <div
-        className="card bg-base-100 w-80 shadow-xl p-4 cursor-pointer"
+        className="card bg-base-100 w-80 shadow-xl p-4 cursor-pointer border-2"
         onClick={() => document.getElementById(`my_modal_${_id}`).showModal()}
       >
         <p className="text-sm">{dateFormater.format(new Date(createdAt))}</p>

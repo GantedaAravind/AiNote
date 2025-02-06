@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Notes from "./pages/Notes";
 import NotFound from "./pages/NotFound";
+import ErrorBoundary from "./componets/ErrorBoundary";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
@@ -18,10 +19,10 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <>
+    <ErrorBoundary>
       <Toaster />
       <RouterProvider router={router} />
-    </>
+    </ErrorBoundary>
   );
 }
 
