@@ -74,15 +74,14 @@ Your app will be live at: **`http://localhost:5000`** 🎉
 - `POST /api/auth/signup` ➝ Register a new user
 - `POST /api/auth/login` ➝ Log in and get a JWT token
 - `POST /api/auth/logout` ➝ Log out the user
+- `GET /user/me` ➝ Get information of the logged-in user
 
 ### **📝 Notes Routes**
 
-- `POST /api/notes` ➝ Create a new note
-- `GET /api/notes` ➝ Get all notes of the logged-in user
-- `PUT /api/notes/:id` ➝ Update a note
-- `DELETE /api/notes/:id` ➝ Delete a note
-
----
+- `POST /note/createNote` ➝ Create a new note (alternative route for note creation)
+- `PUT /note/updateNote/:id` ➝ Update an existing note by ID (alternative route for updating notes)
+- `DELETE /note/deleteNote/:id` ➝ Delete a specific note by ID (alternative route for deleting notes)
+- `GET /note` ➝ Get all notes of the logged-in user
 
 ## 🛠️ **Project Structure**
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import dateFormater from "../config/dateFromatter";
-import { FaPenToSquare, FaRegStar, FaStar } from "react-icons/fa6";
+import { FaPenToSquare, FaRegStar, FaStar, FaClipboard } from "react-icons/fa6";
 import { MdDelete } from "react-icons/md";
 import axiosInstance from "../config/axiosInstance";
 import toast from "react-hot-toast";
@@ -11,6 +11,7 @@ const Note = ({ title, content, _id, createdAt, isFavorite, imageUrls }) => {
   const [edit, setEdit] = useState(false);
   const [data, setData] = useState({ title, content, isFavorite, imageUrls });
   const dispatch = useDispatch();
+
   const deleteNotes = async () => {
     try {
       const res = await axiosInstance.delete(`note/deletenotes/${_id}`);
@@ -78,6 +79,18 @@ const Note = ({ title, content, _id, createdAt, isFavorite, imageUrls }) => {
       return { ...prevData, isFavorite };
     });
   }
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(data.content).then(
+      () => {
+        toast.success("Content copied to clipboard!");
+      },
+      (err) => {
+        toast.error("Failed to copy content to clipboard.");
+      }
+    );
+  };
+
   return (
     <>
       {/* Open the modal using document.getElementById('ID').showModal() method */}
@@ -148,6 +161,9 @@ const Note = ({ title, content, _id, createdAt, isFavorite, imageUrls }) => {
           <div className="flex items-center justify-between">
             <button className="btn btn-accent" onClick={updateNotes}>
               save
+            </button>
+            <button className="btn btn-outline ml-4" onClick={copyToClipboard}>
+              <FaClipboard className="text-xl" />
             </button>
             <div className="modal-action">
               <form method="dialog">
