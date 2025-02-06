@@ -1,4 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "regenerator-runtime/runtime";
+
+import { Toaster } from "react-hot-toast";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -16,7 +19,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-      <p className="text-center  bg-red-300 font-bold text-lg">OM Sri Sairam</p>
+      <Toaster />
       <RouterProvider router={router} />
     </>
   );
